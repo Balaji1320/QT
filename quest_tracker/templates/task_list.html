@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+  font-family: Times New Roman, Helvetica, sans-serif;
+  background-color: #c6f7e9;
+}
+table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1.5px solid ;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #c6f7e9;
+
+    }
+    .status-column {
+    background-color: #c5dce8;
+}
+.status-description-column {
+    background-color: #c5dce8;
+
+    </style>
+    <title>Task List</title>
+</head>
+<body>
+    <center> <h1>Task List</h1> </center>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Task Name </th>
+                <th>Description </th>
+                <th>Due Date </th>
+                <th>EmpID</th>
+                <th>Status </th>
+                <th>Status Description </th>
+                <th>Update Status  </th>
+                <th>Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ forloop.counter}}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.due_date|date:"Y-m-d" }}</td>
+                 <td style="background-color: #8cff32;">{{ task.assigned_to.empid }}</td>
+                <td class="status-column">{{ task.status}}</td>
+                <td class="status-description-column">{{ task.status_description }}</td>
+
+                <td>
+                    <a href="{% url 'update_task_status' task.id %}">Employee Status</a>
+                </td>
+                <td>
+                    <a href="{% url 'edit_task' task.id %}">Edit| </a>
+                   <a href="{% url 'delete_task' task.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

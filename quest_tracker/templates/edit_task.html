@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                <style>
+body{
+  font-family: Times New Roman, Helvetica, sans-serif;
+  background-color: #c6f7e9;
+}
+form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* add spacing between form elements */
+         label, input, textarea, select {
+            margin-bottom: 10px;
+
+        }
+</style>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+</head>
+<body>
+
+<center><h1>Edit Task</h1></center>
+
+<form method="post" action="{% url 'edit_task' task.id %}">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="{{ task.name }}">
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description">{{ task.description }}</textarea>
+    <br>
+     <label for="due_date">Due Date (YYYY-MM-DD):</label>
+    <input type="text" name="due_date" id="due_date" pattern="\d{4}-\d{2}-\d{2}" title="Please enter date in YYYY-MM-DD format">
+    <br>
+    <label for="status">Status:</label>
+    <input type="text" name="status" id="status" value="{{ task.status }}">
+    <br>
+    <label for="assigned_to">Assigned To:</label>
+    <input type="text" name="assigned_to" id="assigned_to" value="{{ task.assigned_to.id }}">
+    <br>
+    <input type="submit" value="Save">
+</form>
+
+</body>
+</html>

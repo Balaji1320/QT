@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body{
+  font-family: Times New Roman, Helvetica, sans-serif;
+  background-color: #c6f7e9;
+}
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 3px 0 22px 0;
+  display: inline-block;
+  border: ;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: orange;
+  outline: non
+}
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+  <div class="container">
+  <center>  <h1> Employee Registeration Form</h1> </center>
+  <hr>
+  </div>
+</form>
+<form method="post">
+    {% csrf_token %}
+    <table align="center">
+        <tr>
+        <td>
+            <label>Name</label>
+        </td>
+        <td>
+            <input type="text" name="name">
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <label>Employee ID</label>
+        </td>
+        <td>
+            <input type="text" name="empid">
+        </td>
+        </tr>
+        <tr>
+            <td>
+                <label>User Name </label>
+            </td>
+            <td>
+                <input type="text" name="username">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password</label>
+            </td>
+            <td>
+                <input type="text" name="password">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Register">
+            </td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

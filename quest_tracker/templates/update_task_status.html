@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+            <style>
+body{
+  font-family: Times New Roman, Helvetica, sans-serif;
+  background-color: #c6f7e9;
+}
+form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* add spacing between form elements */
+         label, input, textarea, select {
+            margin-top: 10px;
+
+        }
+</style>
+    <title>Update Task Status</title>
+</head>
+<body>
+    <center><h1>Update Task Status</h1></center>
+     <p>Assigned to: {{ employee.name }}</p>
+    <p>Task name: {{ task.name }}</p>
+    <p>Description: {{ task.description }}</p>
+    <form method="post" action="{% url 'update_task_status' task.id %}">
+        {% csrf_token %}
+        <label for="status">Status:</label>
+        <select name="status">
+            <option {% if task.status == "Not Started" %}selected{% endif %}>Not Started</option>
+            <option {% if task.status == "In Progress" %}selected{% endif %}>In Progress</option>
+            <option {% if task.status == "Completed" %}selected{% endif %}>Completed</option>
+        </select>
+        <br>
+        <label for="status_description">Status Description:</label>
+        <textarea name="status_description" id="status_description">{{ task.status_description }}</textarea>
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

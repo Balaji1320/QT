@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+body{
+  background-color: #c6f7e9;
+}
+input[type=text], input[type=password], textarea {
+width: 100%;
+padding: 10px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: ;
+background: #f1f1f1;
+}
+    table {
+        border-collapse: collapse;
+        width: 50%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    a {
+        text-decoration: none;
+        color: blue;
+        padding: 5px;
+    }
+</style>
+<center><h1> Manager Approval</h1></center>
+<br>
+<br>
+<table align="center">
+    <tr>
+        <th>Name</th>
+        <th>EmpID</th>
+        <th>Username</th>
+        <th>Status</th>
+    </tr>
+    {% for employee in value %}
+    <tr>
+        <td>{{employee.name}}</td>
+        <td>{{employee.empid}}</td>
+        <td>{{employee.username}}</td>
+        <td>{{employee.Status}}</td>
+        <td>
+            <a href="/approve/{{employee.id}}">Approve</a>
+            <a href="/edit/{{employee.id}}">Edit</a>
+            <a href="/delete/{{employee.id}}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

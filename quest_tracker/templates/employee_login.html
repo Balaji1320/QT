@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <style>
+    input[type=text], input[type=password], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: ;
+  background: #f1f1f1;
+  }
+body{
+  font-family:Times New Roman, Helvetica, sans-serif;
+  background-color: #c6f7e9;
+}
+</style>
+    <center><h1> Employee Login</h1></center>
+<form method="post">
+    {% csrf_token %}
+    <table align="center">
+        <tr>
+            <td>
+                <label>Username</label>
+            </td>
+            <td>
+                <input type="text" name="username">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password</label>
+            </td>
+            <td>
+                <input type="text" name="password">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="Login">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

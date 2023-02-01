@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+</head>
+<body>
+
+<h1>Employee List</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>EmpID</th>
+        <th>Username</th>
+        <th>Actions</th>
+    </tr>
+    {% for employee in employees %}
+    <tr>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.empid }}</td>
+        <td>{{ employee.username }}</td>
+        <td>
+            <a href="{% url 'edit_employee' employee.id %}">Edit</a>
+            <a href="{% url 'delete_employee' employee.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'create_employee' %}">Create Employee</a>
+
+</body>
+</html>

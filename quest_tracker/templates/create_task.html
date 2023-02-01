@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style>
+body{
+  font-family: Times New Roman, Helvetica, sans-serif;
+  background-color: #c6f7e9;
+}
+form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* add spacing between form elements */
+        label, input, textarea, select {
+            margin-bottom: 1px;
+        }
+        table {
+        border-collapse: collapse;
+        width: 50%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    a {
+        text-decoration: none;
+        color: blue;
+        padding: 5px;
+    }
+</style>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+</head>
+<body>
+    <div style="position: absolute; top: 40; left: 10;">
+        <a href="{% url 'task_list' %}" style="text-decoration: none; color: white; background-color: #1d4959; padding: 10px;">Click To View-Edit-Delete Task List</a>
+            <a href="{% url 'edit_task=task_id' task.id %}" class="btn btn-primary">Edit</a>
+    </div>
+
+<center> <h1>Create Task </h1> </center>
+
+<form method="post" action="{% url 'create_task' %}">
+    {% csrf_token %}
+    <label for="name"> Task Name:</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description"></textarea>
+    <br>
+    <label for="due_date">Due Date (YYYY-MM-DD):</label>
+    <input type="text" name="due_date" id="due_date" pattern="\d{4}-\d{2}-\d{2}" title="Please enter date in YYYY-MM-DD format">
+    <label for="assigned_to">Assigned To:</label>
+    <input type="text" name="assigned_to" id="assigned_to">
+    <br>
+    <input type="submit" value="Create">
+</form>
+
+<center><h1> Manager Approval for Employee Registration </h1></center>
+<center><button type="button" class="btn btn-primary" style="padding: 15px 25px; background-color: #5e2323 ; color: white;" onclick="location.href='{% url 'manager' %}'"> Click Button to Approve Employee Registration </button></center>
